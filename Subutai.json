@@ -1,0 +1,46 @@
+{
+  "name": "${environmentName}",
+  "description": "Subutai Atlassian integration",
+  "nodes": [
+    {
+      "name": "jira",
+      "template": "mysql@280dcda67a67d071970ff838d0331c33c0c04710",
+      "peer_group": "mattermost",
+      "size": "HUGE"
+    },
+    {
+      "name": "postgresql",
+      "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
+      "peer_group": "mattermost",
+      "size": "HUGE"
+    }
+
+  ],
+  "peerGroups": [
+    {
+      "name": "mattermost",
+      "pricingPref": {
+        "maxPrice": "${maxPrice}"
+      }
+    }
+  ],
+  "sshKey": "ztimur",
+  "configuration": {
+    "playbook": "https://github.com/platium/atlassian-subutai/archive/master.zip",
+    "script": "main.yml",
+    "groups": [
+      {
+        "name": "db",
+        "nodes_name": [
+          "postgresql"
+        ]
+      },
+      {
+        "name": "jira",
+        "nodes_name": [
+          "jira"
+        ]
+      }
+    ]
+  }
+}
