@@ -6,13 +6,13 @@
       "name": "mysql",
       "template": "mysql@280dcda67a67d071970ff838d0331c33c0c04710",
       "peer_group": "mattermost",
-      "size": "LARGE"
+      "size": "HUGE"
     },
     {
       "name": "mattermost",
       "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
       "peer_group": "mattermost",
-      "size": "LARGE"
+      "size": "HUGE"
     }
 
   ],
