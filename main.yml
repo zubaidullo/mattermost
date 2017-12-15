@@ -1,0 +1,8 @@
+---
+- hosts: mattermost
+  tasks:  
+  - name: Copy dbconfig xml
+    template: src="config.json.j2"   dest="/opt/mattermost/config/config.json"   mode=777
+   
+  - name: restart mattermost
+    systemd: state=started name=mattermost
