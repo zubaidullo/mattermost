@@ -11,7 +11,7 @@
     {
       "name": "mattermost",
       "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
-      "peer_group": "mattermost-1",
+      "peer_group": "mattermost",
       "size": "HUGE"
     }
 
