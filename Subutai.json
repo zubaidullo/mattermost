@@ -24,7 +24,6 @@
       }
     }
   ],
-  "sshKey": "ztimur",
   "configuration": {
     "playbook": "https://github.com/platium/mattermost/archive/master.zip",
     "script": "main.yml",
