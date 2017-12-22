@@ -1,6 +1,6 @@
 {
   "name": "${environmentName}",
-  "description": "Subutai Atlassian integration",
+  "description": "Subutai Mattermost",
   "nodes": [
     {
       "name": "mysql",
