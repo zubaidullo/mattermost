@@ -1,6 +1,6 @@
 {
   "name": "${environmentName}",
-  "description": "Subutai Mattermost",
+  "description": "Subutai Mattermost one one",
   "nodes": [
     {
       "name": "mysql",
