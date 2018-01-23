@@ -1,7 +1,7 @@
 {
   "name": "${environmentName}",
   "description": "Subutai Mattermost",
-  "nodes": [
+  "containers": [
     {
       "hostname": "mysql",
       "template": "mysql@280dcda67a67d071970ff838d0331c33c0c04710",
@@ -13,7 +13,7 @@
       "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
       "peer-criteria": "mattermost",
       "size": "${mattermostcontainertype}",
-      "expose": [
+      "port-mapping": [
         {
           "protocol": "tcp",
           "domain": "${domain}",
@@ -32,6 +32,12 @@
   "configuration": {
     "source-url": "https://github.com/platium/mattermost/archive/master.zip",
     "ansible-playbook": "main.yml",
+    "arguments": [
+      {
+        "key": "key1",
+        "value": "value1"
+      }
+    ],
     "groups": [
       {
         "name": "db",
