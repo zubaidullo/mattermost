@@ -1,45 +1,82 @@
 {
   "name": "${environmentName}",
-  "description": "Subutai Mattermost one one",
+  "description": "Subutai Mattermost",
   "nodes": [
     {
-      "name": "mysql",
+      "hostname": "mysql",
       "template": "mysql@280dcda67a67d071970ff838d0331c33c0c04710",
-      "peer_group": "mattermost",
-      "size": "HUGE"
+      "peer-criteria": "mattermost",
+      "size": "${dbcontainertype}"
     },
     {
-      "name": "mattermost",
+      "hostname": "mattermost",
       "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
-      "peer_group": "mattermost",
-      "size": "HUGE"
+      "peer-criteria": "mattermost",
+      "size": "${mattermostcontainertype}",
+      "expose": [
+        {
+          "protocol": "tcp",
+          "domain": "${domain}",
+          "internal-port": "8065",
+          "external-port": "8090"
+        }
+      ]
     }
-
   ],
-  "peerGroups": [
+  "peer-criteria": [
     {
       "name": "mattermost",
-      "pricingPref": {
-        "maxPrice": "${maxPrice}"
-      }
+      "max-price": "50"
     }
   ],
   "configuration": {
-    "playbook": "https://github.com/platium/mattermost/archive/master.zip",
-    "script": "main.yml",
+    "source-url": "https://github.com/platium/mattermost/archive/master.zip",
+    "ansible-playbook": "main.yml",
     "groups": [
       {
         "name": "db",
-        "nodes_name": [
+        "hostnames": [
           "mysql"
         ]
       },
       {
         "name": "mattermost",
-        "nodes_name": [
+        "hostnames": [
           "mattermost"
         ]
       }
     ]
+  },
+  "user-variables": {
+    "dbcontainertype": {
+      "description": "You can set TINY,SMALL,MEDIUM,LARGE,HUGE",
+      "type": "enum",
+      "default": "SMALL",
+      "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
+    },
+    "mattermostcontainertype": {
+      "description": "You can set TINY,SMALL,MEDIUM,LARGE,HUGE",
+      "type": "enum",
+      "default": "SMALL",
+      "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
+    },
+    "maxPrice": {
+      "description": "Enter the max price",
+      "type": "int",
+      "default": "50",
+      "validation": "\\d+"
+    },
+    "domain": {
+      "description": "Enter your domain name",
+      "type": "string",
+      "default": "mattermost.envs.subutai.cloud",
+      "validation": "[a-zA-Z0-9.-]+"
+    },
+    "environmentName": {
+      "description": "Enter your environment name",
+      "type": "string",
+      "default": "mattermost env",
+      "validation": "[a-zA-Z0-9]+"
+    }
   }
 }
