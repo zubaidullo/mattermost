@@ -1,6 +1,8 @@
 {
   "name": "${environmentName}",
   "description": "Subutai Mattermost",
+  "version": "1.0.1",
+  "author": "Sydyk",
   "containers": [
     {
       "hostname": "mysql",
