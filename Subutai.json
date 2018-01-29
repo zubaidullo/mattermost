@@ -1,6 +1,6 @@
 {
   "name": "${environmentName}",
-  "description": "Subutai Mattermost",
+  "description": "Subutai Mattermost 1",
   "version": "1.0.1",
   "author": "Sydyk",
   "containers": [
