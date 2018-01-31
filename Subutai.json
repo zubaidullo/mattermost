@@ -13,7 +13,7 @@
     {
       "hostname": "mattermost",
       "template": "mattermost@280dcda67a67d071970ff838d0331c33c0c04710",
-      "peer-criteria": "HTTP-GROUP1",
+      "peer-criteria": "HTTP-GROUP",
       "size": "${mattermostContainerType}",
       "port-mapping": [
         {
@@ -28,10 +28,6 @@
   "peer-criteria": [
     {
       "name": "HTTP-GROUP",
-      "max-price": "${maxPeersPrice}"
-    },
-    {
-      "name": "HTTP-GROUP1",
       "max-price": "${maxPeersPrice}"
     }
   ],
@@ -67,16 +63,16 @@
       "validation": "[a-zA-Z0-9.-]+"
     },
     "mysqlDBtype": {
-      "description": "You can set MEDIUM,LARGE,HUGE",
+      "description": "You can set LARGE,HUGE",
       "type": "enum",
       "default": "SMALL",
-      "validation": "MEDIUM,LARGE,HUGE"
+      "validation": "LARGE,HUGE"
     },
     "mattermostContainerType": {
-      "description": "You can set MEDIUM,LARGE,HUGE",
+      "description": "You can set LARGE,HUGE",
       "type": "enum",
       "default": "SMALL",
-      "validation": "MEDIUM,LARGE,HUGE"
+      "validation": "LARGE,HUGE"
     },
     "maxPeersPrice": {
       "description": "Enter max price of peer you are looking for",
